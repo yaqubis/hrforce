@@ -1,8 +1,5 @@
 package br.com.hrforce.model.entity;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -20,44 +17,30 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "clock")
+@Table(name = "employee_user")
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Clock {
+public class EmployeeUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_clock", nullable = false)
-    private Long idClock;
+    @Column(name = "id_employee_user", nullable = false)
+    private Long idEmployeeUser;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_employee", nullable = false)
     @ToString.Exclude
     private Employee employee;
 
-    @Column(name = "reference_date", nullable = false)
-    private LocalDate referenceDate;
+    @Column(name = "username", nullable = false)
+    private String username;
 
-    @Column(name = "first_mark")
-    private LocalTime firstMark;
-
-    @Column(name = "second_mark")
-    private LocalTime secondMark;
-
-    @Column(name = "third_mark")
-    private LocalTime thirdMark;
-
-    @Column(name = "fourth_mark")
-    private LocalTime fourthMark;
-
-    @Column(name = "fifth_mark")
-    private LocalTime fifthMark;
-
-    @Column(name = "sixth_mark")
-    private LocalTime sixthMark;
+    @Column(name = "password", nullable = false, length = 600)
+    @ToString.Exclude
+    private String password;
 
 }
